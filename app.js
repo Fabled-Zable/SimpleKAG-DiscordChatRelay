@@ -71,7 +71,7 @@ socket.on("data",(data)=>{
     let time = tokens[0];
     let type = tokens[1];
     if(type == "discordMessage"){
-        let json = content.substr(time.length + type.length + 2); //2 being the number of spaces
+        let json = content[0].substr(time.length + type.length + 2); //2 being the number of spaces
         let message = JSON.parse(json);
         console.log(message);
         client.channels.get(message.channelID).send(new Discord.RichEmbed().setAuthor(message.username).setDescription(message.content));
@@ -89,7 +89,7 @@ function command(cmd){
 }
 
 function writeToChat(message){
-    message.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/'/g,"\\'");//sanitise content to prevent code injection
+    message = message.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/'/g,"\\'");//sanitise content to prevent code injection
     
     command(`CRules@ r = getRules();CBitStream p; p.write_string("${message}"); r.SendCommand(r.getCommandID("addToChat"),p,true);`);
 }
