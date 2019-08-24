@@ -89,7 +89,12 @@ function command(cmd){
 }
 
 function writeToChat(message){
-    message = message.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/'/g,"\\'");//sanitise content to prevent code injection
+    message = message.replace(/\\/g,"\\\\")
+    .replace(/"/g,'\\"')
+    .replace(/'/g,"\\'")
+    .replace(/\*/g,"\\*")
+    .replace(/_/g,"\_")
+    .replace(/~/g,"\~");//sanitise content to prevent code injection
     
     command(`CRules@ r = getRules();CBitStream p; p.write_string("${message}"); r.SendCommand(r.getCommandID("addToChat"),p,true);`);
 }
