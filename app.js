@@ -74,7 +74,7 @@ socket.on("data",(data)=>{
         let json = content[0].substr(time.length + type.length + 2); //2 being the number of spaces
         let message = JSON.parse(json);
         console.log(message);
-        client.channels.get(message.channelID).send(`${message.username}: ${message.content}`);
+        client.channels.get(message.channelID).send(`${message.username}: \`\`\`${message.content}\`\`\``);
     }
 });
 
