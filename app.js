@@ -41,7 +41,7 @@ function checkConnection(){
         try{
         socket.reconnect();
         }
-        catch{
+        catch(e){
             console.log(c.red(`failed to conntect to ${config.Host}:${config.Port}`));
         }
     }
