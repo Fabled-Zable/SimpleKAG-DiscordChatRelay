@@ -66,8 +66,8 @@ socket.on("close",(hadError)=>{
 });
 
 socket.on("data",(data)=>{
-    let content = data.toString();
-    let tokens  = content.split(/ /g);
+    let content = data.toString().split(/\n/);
+    let tokens  = content[0].split(/ /g);
     let time = tokens[0];
     let type = tokens[1];
     if(type == "discordMessage"){
