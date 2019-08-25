@@ -3,10 +3,14 @@ const client = new Discord.Client();
 const fs = require('fs');
 const net = require('net');
 const reconnect = require('net-socket-reconnect');
-const config = JSON.parse(fs.readFileSync('config.json'));
-const socket = reconnect({port:config.Port,reconnectInterval:150,reconnectOnError:true,reconnectOnCreate:true,reconnectTimes:Infinity});
 const c = require('ansi-colors');
 
+if(!fs.existsSync("config.json")){
+    console.log(c.red(`config.json not found please create\nexample: {"Host":"127.0.0.1","Port":50301,"Password":"******","token":"******","ChatChannelID":"123456789123456789"}`));
+    process.exit();
+}
+const config = JSON.parse(fs.readFileSync('config.json'));;
+const socket = reconnect({port:config.Port,reconnectInterval:150,reconnectOnError:true,reconnectOnCreate:true,reconnectTimes:Infinity});
 
 client.login(config.token);
 
