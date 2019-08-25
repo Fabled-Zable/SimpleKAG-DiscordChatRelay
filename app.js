@@ -21,7 +21,6 @@ client.on("ready",() =>
         .catch(console.error);
 });
 
-
 client.on("message",(msg)=>{
     if(msg.channel.id != config.ChatChannelID || msg.author == client.user) return;
     try{
@@ -78,7 +77,11 @@ socket.on("data",(data)=>{
         let json = content[0].substr(time.length + type.length + 2); //2 being the number of spaces
         let message = JSON.parse(json);
         console.log(message);
-        client.channels.get(message.channelID).send(`${message.username}: \`\`${message.content}\`\``);
+        if(message.dataType == "chat"){
+            let out = `**${message.username}**: \`\`${message.content}\`\``;
+            
+            client.channels.get(config.ChatChannelID).send(out);
+        }
     }
 });
 
