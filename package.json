@@ -1,0 +1,24 @@
+{
+  "name": "simplekag-discordchatrelay",
+  "version": "1.0.0",
+  "description": "Relay text between a King Arthur's Gold server's chat and a Discord guild's channel",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zable-the-Unable/SimpleKAG-DiscordChatRelay.git"
+  },
+  "author": "Zable",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Zable-the-Unable/SimpleKAG-DiscordChatRelay/issues"
+  },
+  "homepage": "https://github.com/Zable-the-Unable/SimpleKAG-DiscordChatRelay#readme",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "discord.js": "^11.5.1",
+    "net-socket-reconnect": "0.0.9"
+  }
+}
