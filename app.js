@@ -77,11 +77,37 @@ socket.on("data",(data)=>{
         let json = content[0].substr(time.length + type.length + 2); //2 being the number of spaces
         let message = JSON.parse(json);
         console.log(message);
-        if(message.dataType == "chat"){
-            let out = `**${message.username}**: \`\`${message.content}\`\``;
+
+        let serverChat = client.channels.get(config.ChatChannelID);
+
+        switch(message.dataType)
+        {
+            case "chat":
+                {
+                    let out = `**${message.username}**: \`\`${message.content}\`\``;
             
-            client.channels.get(config.ChatChannelID).send(out);
-        }
+                    serverChat.send(out);
+                }
+            break;
+            case "playerdie":
+                {
+                    let out = new Discord.RichEmbed();
+
+                    if(message.attackerNull)
+                    {
+                        out.setTitle(`**__${message.victim} the ${message.lastVicBlob}__ KILLED THEMSELF!**`);
+                    }else{
+                        out.setTitle(`**__${message.victim} the ${message.lastVicBlob} __ WAS KILLED BY __${message.attacker} the ${message.lastAttBlob}__!!**`)
+                    }
+                    serverChat.send(out);
+                }
+            break;
+            case "playerjoin":
+                serverChat.send(new Discord.RichEmbed().setTitle(`**__${message.username}__ HAS JOINED!**`).setDescription("Say hello!"));
+            break;
+            case "playerleave":
+            }
+            serverChat.send(new Discord.RichEmbed().setTitle(`**__${message.username}__ has left.**`)).then((x)=> x.react('😢'));
     }
 });
 
