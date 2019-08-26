@@ -15,7 +15,7 @@ const socket = reconnect({port:config.Port,reconnectInterval:150,reconnectOnErro
 client.login(config.token);
 
 client.on("ready",() =>
-{
+{   
     console.log(c.green(`Bot is now ready, logged on as ${client.user.tag}`));
     client.user.setStatus("idle")
         .catch(console.error);
@@ -73,7 +73,7 @@ socket.on("data",(data)=>{
     let tokens  = content[0].split(/ /g);
     let time = tokens[0];
     let type = tokens[1];
-    if(type == "discordMessage"){
+    if(type == "discordData"){
         let json = content[0].substr(time.length + type.length + 2); //2 being the number of spaces
         let message = JSON.parse(json);
         console.log(message);
