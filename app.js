@@ -106,8 +106,9 @@ socket.on("data",(data)=>{
                 serverChat.send(new Discord.RichEmbed().setTitle(`**__${message.username}__ HAS JOINED!**`).setDescription("Say hello!"));
             break;
             case "playerleave":
-            }
             serverChat.send(new Discord.RichEmbed().setTitle(`**__${message.username}__ has left.**`)).then((x)=> x.react('😢'));
+            break;
+        }
     }
 });
 
