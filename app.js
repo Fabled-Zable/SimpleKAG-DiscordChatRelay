@@ -91,7 +91,7 @@ socket.on("data",(data)=>{
             break;
             case "playerdie":
                 {
-                    let out = new Discord.RichEmbed();
+                    let out = new Discord.RichEmbed().setThumbnail("https://i.imgur.com/zcNs1yO.png");
 
                     if(message.attackerNull)
                     {
