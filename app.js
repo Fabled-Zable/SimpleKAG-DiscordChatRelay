@@ -35,12 +35,6 @@ client.on("message",(msg)=>{
     }
 });
 
-client.on("messageUpdate",(oldMsg,newMsg) =>{
-    if(newMsg.channel.id != config.ChatChannelID) return;
-
-    writeToChat(`(EDIT)<${newMsg.author.tag}> ${newMsg.content}`);
-})
-
 function checkConnection(){
     try{
         socket.write("print('testing connecton');");
