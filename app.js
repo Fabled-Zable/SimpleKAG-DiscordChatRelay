@@ -123,12 +123,10 @@ function command(cmd){
 }
 
 function writeToChat(message){
-    message = message.replace(/\\/g,"\\\\")
+    message = message
+    .replace(/\\/g,"\\\\")
     .replace(/"/g,'\\"')
-    .replace(/'/g,"\\'")
-    .replace(/\*/g,"\\*")
-    .replace(/_/g,"\_")
-    .replace(/~/g,"\~");//sanitise content to prevent code injection
+    .replace(/'/g,"\\'");//sanitize content to prevent code injection
     
     command(`CRules@ r = getRules();CBitStream p; p.write_string("${message}"); r.SendCommand(r.getCommandID("addToChat"),p,true);`);
 }
