@@ -95,7 +95,7 @@ socket.on("data",(data)=>{
 
                     if(message.attackerNull)
                     {
-                        out.setTitle(`**__${message.victim} the ${message.lastVicBlob}__ KILLED THEMSELVES!**`);
+                        out.setTitle(`**__${message.victim} the ${message.lastVicBlob}__ WAS KILLED!!**`);
                     }else{
                         out.setTitle(`**__${message.victim} the ${message.lastVicBlob} __ WAS KILLED BY __${message.attacker} the ${message.lastAttBlob}__!!**`)
                     }
