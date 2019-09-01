@@ -27,7 +27,7 @@ client.on("message",(msg)=>{
     let content = msg.content;
     let name = msg.author.tag;
     
-    writeToChat(`<${name}> ${content}`);
+    writeToChat(`Discord: <${name}> ${content}`);
     }
     catch(e){
         console.error(e);
