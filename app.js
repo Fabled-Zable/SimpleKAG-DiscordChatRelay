@@ -102,10 +102,10 @@ socket.on("data",(data)=>{
                     let team = message.team;
                     switch(team){
                         case 0:
-                        out.setColor(0x0000ff);
+                        out.setColor(0x1d85ab);
                         break;
                         case 1:
-                        out.setColor(0xff0000);
+                        out.setColor(0xb73333);
                         break
                     }
                     serverChat.send(out);
