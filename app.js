@@ -99,6 +99,15 @@ socket.on("data",(data)=>{
                     }else{
                         out.setTitle(`**__${message.victim} the ${message.lastVicBlob} __ WAS KILLED BY __${message.attacker} the ${message.lastAttBlob}__!!**`)
                     }
+                    let team = message.team;
+                    switch(team){
+                        case 0:
+                        out.setColor(0x0000ff);
+                        break;
+                        case 1:
+                        out.setColor(0xff0000);
+                        break
+                    }
                     serverChat.send(out);
                 }
             break;
